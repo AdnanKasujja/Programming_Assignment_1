@@ -22,14 +22,17 @@ int main()
 	int playerPoints = 200;
 	int numberOfLives = 2;
 	string playerInput;
+	int currentPosition = 1;
+	char currentDirection1 = 'N', currentDirection2 = 'E';
+	string currentDirection3 = "North", currentDirection4 = "East";
 	int round = 1;
 
 
 
-	cout << "Get Ready! You have to reach the end of the maze to collect the treasure! \n" << endl;
+	cout << "Get Ready! You need to reach the end of the maze to collect the treasure! \n" << endl;
 	cout << "You can only get the treasure once you have collected the key, which is hidden somewhere else in the maze \n" << endl;
 	cout << "For every step taken, you will lose 10 points. If you bump into a wall, you lose 5 points.  \n " << endl;
-	cout << "You lose if you run out of points, and lives!" << endl;
+	cout << "If you run out of points or your lives, you lose! \n" << endl;
 	cout << "Begin! \n" << endl;
 
 
@@ -37,35 +40,47 @@ int main()
 	system("cls");
 
 	do {
-		cout << "Press Enter to Start! \n \n" << endl;
-		cout << "You are currently at Position 1 \n" << endl;
-		cout << "Press N to move North, Press E to Move East" << endl;
+		cout << "You are currently at Position " <<currentPosition << " \n" << endl;
+		cout << "Press " <<currentDirection1 << " to move "<< currentDirection3 <<",or Press " << currentDirection2 << " to Move " <<currentDirection4 << endl;
+		cin >> playerInput;
 
 
 		if (playerInput == "N")
 		{
 
 			playerPoints - 10;
-			cout << "You moved North! You are currently at Position 8 \n" << endl;
+			currentPosition = 8;
+			currentDirection1 = 'E';
+			currentDirection2 = 'S';
+			currentDirection3 = "East";
+			currentDirection4 = "South";
+			cout << "You moved North! You are currently at Position " <<currentPosition << " \n" << endl;
 			system("PAUSE");
-			cout << "Currently, you have \n" << playerPoints << endl;
+			cout << "Currently, you have \n" << playerPoints << " points" << endl;
 			system("PAUSE");
 			cout << "You can either Press E to move East, or S to move South" << endl;
+			system("PAUSE");
 			system("cls");
 		}
 		else if (playerInput == "E")
 		{
 			playerPoints - 10;
-			cout << "You moved East! You are currently at Position 2 \n" << endl;
+			currentPosition = 2;
+			currentDirection1 = 'N';
+			currentDirection2 = 'W';
+			currentDirection3 = "North";
+			currentDirection4 = "West";
+			cout << "You moved East! You are currently at Position " <<currentPosition << " \n" << endl;
 			system("PAUSE");
-			cout << "Currently, you have \n" << playerPoints << endl;
+			cout << "Currently, you have \n" << playerPoints << " points" << endl;
 			system("PAUSE");
 			cout << "You can either Press N to move North, or W to move West" << endl;
-			system("cls");
+			system("PAUSE");
+			system("cls");   
 		}
 	} while (playerPoints != 0 || numberOfLives != 0);
 	system("PAUSE");
-	
+
 	if (playerPoints == 0 || numberOfLives == 0)
 	{
 		cout << "Game Over" << endl;
