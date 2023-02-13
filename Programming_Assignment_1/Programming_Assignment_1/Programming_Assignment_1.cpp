@@ -24,7 +24,7 @@ int main()
 	string playerInput;
 	int currentPosition = 1;
 	char currentDirection1 = 'N', currentDirection2 = 'E';
-	string currentDirection3 = "North", currentDirection4 = "East";
+	string currentDirection3 = "North", currentDirection4 = "East", currentDirection5;
 	int round = 1;
 
 
@@ -45,10 +45,10 @@ int main()
 		cin >> playerInput;
 
 
-		if (playerInput == "N")
+		if (currentPosition ==1 && playerInput == "N")
 		{
 
-			playerPoints - 10;
+			playerPoints = playerPoints - 10;
 			currentPosition = 8;
 			currentDirection1 = 'E';
 			currentDirection2 = 'S';
@@ -60,11 +60,11 @@ int main()
 			system("PAUSE");
 			cout << "You can either Press E to move East, or S to move South" << endl;
 			system("PAUSE");
-			system("cls");
+			system("cls");			
 		}
 		else if (playerInput == "E")
 		{
-			playerPoints - 10;
+			playerPoints = playerPoints - 10;
 			currentPosition = 2;
 			currentDirection1 = 'N';
 			currentDirection2 = 'W';
@@ -78,14 +78,56 @@ int main()
 			system("PAUSE");
 			system("cls");   
 		}
-	} while (playerPoints != 0 || numberOfLives != 0);
+		else if (currentPosition == 2 && playerInput == "N")
+		{
+			playerPoints = playerPoints - 10;
+			currentPosition = 3;
+			currentDirection1 = 'N';
+			currentDirection2 = 'S';
+			currentDirection3 = "North";
+			currentDirection4 = "South";
+			currentDirection5 = "East";
+			cout << "You moved North! You are currently at Position " << currentPosition << " \n" << endl;
+			system("PAUSE");
+			cout << "Currently, you have \n" << playerPoints << " points" << endl;
+			system("PAUSE");
+			cout << "You can either Press N to move North, S to move South, or E to move East" << endl;
+			system("PAUSE");
+			system("cls");
+		}
+		else if (playerInput == "W" && currentPosition == 2)
+		{
+			playerPoints = playerPoints - 10;
+			currentPosition = 1;
+			currentDirection1 = 'N';
+			currentDirection2 = 'E';
+			currentDirection3 = "North";
+			currentDirection4 = "East";
+			cout << "You moved West! You are currently at Position " << currentPosition << " \n" << endl;
+			system("PAUSE");
+			cout << "Currently, you have \n" << playerPoints << " points" << endl;
+			system("PAUSE");
+			cout << "You can either Press N to move North, or E to move East" << endl;
+			system("PAUSE");
+			system("cls");
+		}
+
+	} while (playerPoints > 0);
+
 	system("PAUSE");
 
-	if (playerPoints == 0 || numberOfLives == 0)
+	if (playerPoints == 0)
 	{
 		cout << "Game Over" << endl;
 	}
-
+	else if (numberOfLives == 0)
+	{
+		cout << "Game Over" << endl;
+	}
+	else if (playerInput == "X" || "x")
+	{
+		cout << "You exited the map" << endl;
+	}
 	system("PAUSE");
 	return 0;
 }
